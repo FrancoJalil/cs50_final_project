@@ -1,0 +1,80 @@
+body {
+	background-color: #131313;
+	color: white;
+}
+
+.flex-container {
+	border: 1px solid black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0.25rem;
+}
+
+.caja {
+	border: 1px solid #ccc;
+	font-weight: bold;
+	height: 80vh;
+	line-height: 7.5rem;
+	text-align: center;
+	margin-top: 2rem;
+	min-height: 10%;
+}
+
+.caja-1 {
+	width: 12.5rem;
+}
+
+.caja-2 {
+	width: 38rem;
+}
+
+.caja-3 {
+
+	width: 43.75rem;
+	display: flex;
+	align-items: center;
+}
+
+.row {
+	height: 33%;
+	min-height: 10%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid black;
+}
+
+.row-3 {
+	display: flex;
+	justify-content: center;
+	align-items: end;
+	border: 1px solid black;
+
+}
+
+.form {
+	width: 100%;
+	min-height: 10%;
+}
+
+.main-input {
+	width: 80%;
+	min-height: 10%;
+}
+
+.row-1 img {
+	max-height: 50%;
+}
+
+p#show {
+	overflow-y: scroll;
+	text-align: left;
+	height: 75vh;
+	padding: 0px;
+	line-height: 1.8;
+	margin-left: 1rem;
+	margin-bottom: 20px;
+	display: flex-start;
+	align-items: flex-end;
+}

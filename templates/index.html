@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+	<title>SCRAPEASY</title>
+</head>
+<body>
+
+	<div class="flex-container">
+
+		<div class="caja caja-1">
+			column1
+		</div>
+
+		<div class="caja caja-2">
+			<div class="row row-1">
+				<img src="/static/img/logo.jpg">
+			</div>
+
+			<div class="row row-2">
+				<p id="commands-log"></p>
+			</div>
+
+			<div class="row row-3">
+				<div class="form">
+
+					<!--<form action='/get_scrap' class="main-form" method="GET">-->
+
+						<input class="main-input" id="command" autofocus type="text" name="command" placeholder='/scrap web: x.com attr class/id="example" '>
+						<button class="main-button" id="main-button" type="submit">=></button>
+
+					<!--</form>-->
+				</div>
+				
+			</div>
+		</div>
+
+		<div class="caja caja-3">
+			<p id="show"></p>
+		</div>
+		
+	</div>
+
+	<script src="/static/js/script.js"></script>
+</body>
+</html>
