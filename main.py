@@ -1,10 +1,9 @@
 from flask import Flask, render_template, request, Response, redirect, make_response
 from bs4 import BeautifulSoup
-from io import StringIO
+from flask_cors import CORS, cross_origin
 import requests
 
 app = Flask(__name__)
-
 
 def extract_next(word, command):
 
@@ -63,12 +62,14 @@ def scrap_validate(command, length):
 	return attrs
 
 @app.route("/", methods=["GET", "POST"])
+@cross_origin()
 def index():
 
 	return render_template("index.html")
 
 
 @app.route("/get_scrap", methods=["GET", "POST"])
+@cross_origin()
 def get_scrap():
 
 	if request.method == "GET":
@@ -77,7 +78,9 @@ def get_scrap():
 
 		command = command.split()
 
-		if command[0] == '/scrap' and (len(command) == 3 or len(command) == 4):
+		export_re = 'export="'
+
+		if command[0] in ['/scrap', '/export'] and (len(command) == 3 or len(command) == 4):
 			attrs = scrap_validate(command, len(command))
 
 		else:
@@ -90,10 +93,19 @@ def get_scrap():
 			print("Error x")
 			return redirect('/')
 
-		txt = '\n'.join(list_of_text_attrs)
-		print(txt)
+		if command[0] == '/export':
+			try:
+				txt = "\n".join(list_of_text_attrs)
 
-		return Response(txt, mimetype="text/plain")
+				return Response(txt, mimetype="text/plain", headers={"Content-Disposition":"attachment; filename=final.txt"})
+			except:
+				print("Error")
+				return redirect('/')
+
+		# Show into the web JS
+		txt = "<br>".join(list_of_text_attrs)
+
+		return Response(txt, mimetype="text/html")
 
 
 if __name__ == "__main__":

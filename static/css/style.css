@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@200&display=swap');
+
+html {
+	font-family: IBM Plex Mono;
+}
+
 body {
 	background-color: #131313;
 	color: white;
@@ -15,7 +21,6 @@ body {
 	border: 1px solid #ccc;
 	font-weight: bold;
 	height: 80vh;
-	line-height: 7.5rem;
 	text-align: center;
 	margin-top: 2rem;
 	min-height: 10%;
@@ -46,21 +51,31 @@ body {
 }
 
 .row-3 {
-	display: flex;
+	display: block;
 	justify-content: center;
-	align-items: end;
+	align-items: center;
 	border: 1px solid black;
+}
 
+.row-3 p {
+	text-align: left;
+	display: inline;
+	background-color: red;
 }
 
 .form {
-	width: 100%;
+	justify-content: center;
+	align-items: center;
 	min-height: 10%;
+	padding-top: 12vh;
+	padding-bottom: 3vh;
 }
+
 
 .main-input {
 	width: 80%;
 	min-height: 10%;
+	height: 30%;
 }
 
 .row-1 img {
@@ -68,12 +83,15 @@ body {
 }
 
 p#show {
-	overflow-y: scroll;
+	overflow: hidden;
+	overflow-y: auto;
 	text-align: left;
 	height: 75vh;
-	padding: 0px;
+	width: auto;
+	padding-right: 20px;
 	line-height: 1.8;
 	margin-left: 1rem;
+	margin-right: 1rem;
 	margin-bottom: 20px;
 	display: flex-start;
 	align-items: flex-end;
