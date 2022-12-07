@@ -29,19 +29,24 @@ main_button.addEventListener("click", function() {
 
     let show = document.getElementById('show');
     let export_to = document.getElementById('export_to');
-
+    show.style.lineHeight = 1.8;
     if (command.includes("/export")) {
 
       export_to.style.display = "block";
       export_to.href = url;
       export_to.innerHTML = "export.txt";
       
-      if (Http.status == 404) {
+      if (Http.status === 404) {
         show.innerHTML = "Export Failed";
         export_to.style.display = "none";
       }
       
-    } else {
+    } 
+    else if (command === "/docs") {
+      show.style.lineHeight = 0;
+      show.innerHTML = Http.response;
+    } 
+    else {
       export_to.style.display = "none";
       show.innerHTML = Http.response;
   };

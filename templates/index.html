@@ -4,26 +4,23 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
-	<title>SCRAPEASY</title>
+	<link rel="icon" type="image/x-icon" href="/static/img/favicon.ico">
+	<title>SCRAPIEST</title>
 </head>
 <body>
 
 	<div class="flex-container">
 
 		<div class="caja caja-1">
-			<canvas id=canvas>
+			<canvas id="canvas">
 		</div>
 
 		<div class="caja caja-2">
 			<div class="row row-1">
-				<!-- <img src="/static/img/logo.jpg"> -->
 				
-				<h1 id="logo">/SCRAPEASY</h1>
-
-
+				<h1 id="logo">/SCRAPIEST</h1>
                                                                               
 			</div>
-
 			<div class="row row-2">
 				<p id="commands-log"></p>
 			</div>
@@ -31,8 +28,8 @@
 			<div class="row row-3">
 				<div class="form">
 
-						<input class="main-input" id="command" autofocus type="text" name="command" placeholder='/docs'>
-						<button class="main-button" id="main-button" type="submit">=></button>
+						<input class="main-input" id="command" autofocus autocomplete="off" spellcheck="false" type="text" name="command" placeholder='/docs'>
+						<a class="main-button" id="main-button" type="submit">></a>
 						
 				</div>
 				<a download href="" id="export_to"></a>

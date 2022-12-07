@@ -8,11 +8,15 @@ app = Flask(__name__)
 def scrap_validate(command, split_command, length):
 	
 	url = split_command[1]
+
+	if not "https://" in url:
+		url = "https://" + url
 		
 	html_attr = split_command[2]
 
 	try:
 		result = requests.get(url)
+
 	except:
 		return Response("User error: URL FAIL", status=404, mimetype="text/html")
 
@@ -26,13 +30,13 @@ def scrap_validate(command, split_command, length):
 
 		# if class
 		if has_class:
-			html_class = command[3][7:-1]
+			html_class = split_command[3][7:-1]
 			attrs = soup.find_all(html_attr, class_=html_class)
 			return attrs
 
 		# if id
 		elif has_id:
-			html_id = command[3][4:-1]
+			html_id = split_command[3][4:-1]
 			attrs = soup.find_all(html_attr, id=html_id)
 			return attrs
 
@@ -58,7 +62,14 @@ def get_scrap():
 
 		command = request.args.get('command')
 
-		split_command = command.split()
+		if command:
+			split_command = command.split()
+		else:
+			return Response("User error: command failed", status=404, mimetype="text/html")
+
+		if command == '/docs':
+			with open('docs.html') as txt:
+				return Response(txt.read(), mimetype="text/html")
 
 		export_re = 'export="'
 
@@ -66,7 +77,6 @@ def get_scrap():
 			attrs = scrap_validate(command, split_command, len(split_command))
 
 		else:
-			print("hola")
 			return Response("User error: command failed", status=404, mimetype="text/html")
 
 		try:

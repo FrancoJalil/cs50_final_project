@@ -95,6 +95,17 @@ body {
 	height: 30%;
 }
 
+ .main-input { 
+ 	font-size:16px; 
+ 	border-width:2px; 
+ 	border-color:#00ff00; 
+ 	border-style:solid; 
+ 	background-color:#000000; 
+ 	color:#00ff00; padding:9px; 
+ 	font-family:monospace;  
+ }
+.main-input:focus { outline:none; } 
+
 .row-1 img {
 	max-height: 50%;
 }
@@ -105,7 +116,6 @@ p#show {
 	height: 75vh;
 	width: auto;
 	padding-right: 20px;
-	line-height: 1.8;
 	margin-left: 1rem;
 	margin-right: 1rem;
 	margin-bottom: 20px;
@@ -113,8 +123,15 @@ p#show {
 	align-items: flex-end;
 }
 
-a {
-	color: #0f0;
+.main-button {
+	background-color: #00ff00;
+	display:inline-block;
+	cursor:pointer;
+	color: black;
+	font-family:Courier New;
+	font-size:16px;
+	padding:8px 12px;
+	text-decoration:none;
 }
 
 #canvas {
@@ -130,4 +147,10 @@ a {
 
 .caja-3::-webkit-scrollbar-thumb {
 	background: #0f0;
+}
+
+@media (max-width:768) {
+	caja-1 {
+		display: none;
+	}
 }
