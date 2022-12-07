@@ -5,57 +5,39 @@ import requests
 
 app = Flask(__name__)
 
-def extract_next(word, command):
-
-	for l in word:
-		word = ""
-		first = False
-
-		if l == '"' and first == False:
-			word += l
-
-		elif first == True:
-			return word
-
-	# error, tmp
-	print("Missing class or id")
-	return redirect('/')
-
-def scrap_validate(command, length):
+def scrap_validate(command, split_command, length):
 	
-	url = command[1]
+	url = split_command[1]
 		
-	html_attr = command[2]
+	html_attr = split_command[2]
 
 	try:
 		result = requests.get(url)
 	except:
-		print("URL FAIL")
-		return redirect('/')
+		return Response("User error: URL FAIL", status=404, mimetype="text/html")
 
 	content = result.text
 
 	soup = BeautifulSoup(content, 'lxml')
 
 	if length == 4:
-		has_class = ' class="' in command
-		has_id = ' id="' in command
+		has_class = 'class="' in command
+		has_id = 'id="' in command
 
 		# if class
 		if has_class:
-			html_class = extract_next(command[3])
+			html_class = command[3][7:-1]
 			attrs = soup.find_all(html_attr, class_=html_class)
 			return attrs
 
 		# if id
 		elif has_id:
-			html_id = extract_next(command[3])
+			html_id = command[3][4:-1]
 			attrs = soup.find_all(html_attr, id=html_id)
 			return attrs
 
 		else:
-			print("Error class or id")
-			return
+			return Response("User error: class or id", status=404, mimetype="text/html")
 
 	# if just attrs
 	attrs = soup.find_all(html_attr)
@@ -76,37 +58,37 @@ def get_scrap():
 
 		command = request.args.get('command')
 
-		command = command.split()
+		split_command = command.split()
 
 		export_re = 'export="'
 
-		if command[0] in ['/scrap', '/export'] and (len(command) == 3 or len(command) == 4):
-			attrs = scrap_validate(command, len(command))
+		if split_command[0] in ['/scrap', '/export'] and (len(split_command) == 3 or len(split_command) == 4):
+			attrs = scrap_validate(command, split_command, len(split_command))
 
 		else:
-			print("3 or 4 command-words")
-			return redirect('/')
+			print("hola")
+			return Response("User error: command failed", status=404, mimetype="text/html")
 
 		try:
 			list_of_text_attrs = [attr.text for attr in attrs]
 		except:
-			print("Error x")
-			return redirect('/')
+			return Response("User error: class or id failed", mimetype="text/html")
 
-		if command[0] == '/export':
+		if split_command[0] == '/export':
 			try:
-				txt = "\n".join(list_of_text_attrs)
-
-				return Response(txt, mimetype="text/plain", headers={"Content-Disposition":"attachment; filename=final.txt"})
+				if len(list_of_text_attrs) != 0:			
+					txt = "\n".join(list_of_text_attrs)
+					return Response(txt, mimetype="text/plain", headers={"Content-Disposition":"attachment; filename=export.txt"})
+				return Response("User error: command failed", status=404, mimetype="text/html")
 			except:
-				print("Error")
-				return redirect('/')
+				return Response("HTTP Error", status=404, mimetype="text/plain", headers={"Content-Disposition":"attachment; filename=export.txt"})
 
 		# Show into the web JS
 		txt = "<br>".join(list_of_text_attrs)
+		if txt == "":
+			return Response("User error: missing commands<br>Check /docs", status=404, mimetype="text/plain", headers={"Content-Disposition":"attachment; filename=export.txt"})
 
 		return Response(txt, mimetype="text/html")
-
 
 if __name__ == "__main__":
 	app.run(debug=True, port=8000)
