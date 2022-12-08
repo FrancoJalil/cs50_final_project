@@ -1,46 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
 	<link rel="icon" type="image/x-icon" href="/static/img/favicon.ico">
-	<title>SCRAPIEST</title>
+	<title>/SCRAPIEST</title>
 </head>
 <body>
 
 	<div class="flex-container">
 
-		<div class="caja caja-1">
-			<canvas id="canvas">
-		</div>
 
-		<div class="caja caja-2">
-			<div class="row row-1">
-				
-				<h1 id="logo">/SCRAPIEST</h1>
-                                                                              
+			<!-- -->
+			<div class="caja caja-1">
+				<canvas id="canvas"> </canvas>
 			</div>
+
+			<div class="caja caja-2">
+
+					<div class="row row-1">
+
+						<div class="container-h1">
+							<h1 id="logo">/SCRAPIEST</h1>
+						</div>
+		                                                                              
+					</div>
+
 			<div class="row row-2">
-				<p id="commands-log"></p>
+					<p class="p-logs" id="commands-log"></p>
 			</div>
 
 			<div class="row row-3">
-				<div class="form">
+					<div class="form">
 
-						<input class="main-input" id="command" autofocus autocomplete="off" spellcheck="false" type="text" name="command" placeholder='/docs'>
-						<a class="main-button" id="main-button" type="submit">></a>
-						
-				</div>
-				<a download href="" id="export_to"></a>
+						<div class="container-form">
+							<input class="main-input" id="command" autofocus autocomplete="off" spellcheck="false" type="text" name="command" placeholder='/docs'>
+							<a class="main-button" id="main-button">></a>
+						</div>
+
+					</div>
+
+					<div class="container-export-to">
+						<a download href="" id="export_to"></a>
+					</div>
+			</div>
+
+			</div>
+
+			<div class="caja caja-3">
+				<p class="p-show" id="show"></p>
 			</div>
 		</div>
-
-		<div class="caja caja-3">
-			<p id="show"></p>
-		</div>
-		
-	</div>
 
 	<script src="/static/js/script.js"></script>
 </body>
