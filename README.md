@@ -49,3 +49,7 @@ Creation of the canvas to recreate the effect of the Matrix movie.
 ## Other files
 #### docs.html
 Here is written the documentation of the application where you can see how to use it correctly.
+
+## ABOUT CS50
+CS50 It is the perfect course to start in the world of computer science. All topics are explained from the most basic to advanced things. What I liked the most was the number of projects I did, since the modality of the course is after a class, to do one or more projects to apply what I have learned.
+A great experience.
