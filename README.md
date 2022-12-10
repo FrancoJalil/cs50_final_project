@@ -10,20 +10,22 @@ pip install -r requirements.txt
 
 ## Python Files
 #### main.py
-Here is the flask setup and the main logic of the project.
+Here is the flask setup, the routes and the main logic of the project.
 Two routes: index("/") and get_scrap("/get_scrap")
 The index route just returns to the html template.
 The get_scrap route, if is called by the get method, takes the command entered by the user and validates it. If valid, extract what the user wants to scrape into variables. Then thanks to the "BeautifulSoup" library we scrape the requested page with the information that the user entered.
-Then return the output for the frontend to consume.
+Then return the output for the frontend to consume. 
+If there was an error in the user command or in web scraping, it returns an HTTP error.
+This route makes use of the "scrap_validate" and "http_return_error" functions to abstract things away and improve code visibility.
 
 #### helpers.py
 Contains useful functions
-###### scrap_validate:
+##### scrap_validate:
 It takes as arguments the user command, same command separated by words and its length.
 Validate user errors.
 Scrapes a web with the user's requests and returns the requested output in text.
 
-###### http_return_error:
+##### http_return_error:
 It takes as arguments a string and a status code.
 Return a response with a text and a status code.
 
@@ -45,6 +47,9 @@ Save a list of the user's past commands so you can see them.
 /export validations.
 Creation of the canvas to recreate the effect of the Matrix movie.
 
+## templates
+#### index.html
+Structure of the main project screen.
 
 ## Other files
 #### docs.html
