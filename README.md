@@ -3,7 +3,7 @@
 #### Video Demo: https://youtu.be/aL20-5f4BSc
 
 #### Description:
-Application created with Python, Flask, HTML, CSS and Javascript to easily scrape websites.
+Application that allows you to scrape websites very easily using commands. With these commands you can scrape a website and view the output or download it.
 
 ## Dependencies
 pip install -r requirements.txt
