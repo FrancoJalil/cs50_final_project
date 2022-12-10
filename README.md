@@ -49,4 +49,3 @@ Creation of the canvas to recreate the effect of the Matrix movie.
 ## Other files
 #### docs.html
 Here is written the documentation of the application where you can see how to use it correctly.
----
