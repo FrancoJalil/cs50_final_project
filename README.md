@@ -5,6 +5,14 @@
 #### Description:
 Application that allows you to scrape websites very easily using commands. With these commands you can scrape a website and view the output or download it.
 
+#### Technologies used:
+- Python
+- Flask
+- HTML
+- CSS
+- Javascript
+- Other small libraries or packages.
+
 ## Dependencies
 pip install -r requirements.txt
 
@@ -12,20 +20,21 @@ pip install -r requirements.txt
 #### main.py
 Here is the flask setup, the routes and the main logic of the project.
 Two routes: index("/") and get_scrap("/get_scrap")
-The index route just returns to the html template.
-The get_scrap route, if is called by the get method, takes the command entered by the user and validates it. If valid, extract what the user wants to scrape into variables. Then thanks to the "BeautifulSoup" library we scrape the requested page with the information that the user entered.
-Then return the output for the frontend to consume. 
+The index route just returns to the index.html template.
+The get_scrap route, if is called by the get method, takes the command entered by the user and validates it. If valid, gets what the user entered and stores it in variables. Then thanks to the scrap_validate function we scrape the requested page with the information that the user entered.
+We configure the content to be readable by the user and return it so that the frontend can consume it.
 If there was an error in the user command or in web scraping, it returns an HTTP error.
 This route makes use of the "scrap_validate" and "http_return_error" functions to abstract things away and improve code visibility.
 
 #### helpers.py
-Contains useful functions
-##### scrap_validate:
+Contains useful functions to abstract certain parts of the code from main.py
+##### scrap_validate function:
 It takes as arguments the user command, same command separated by words and its length.
 Validate user errors.
-Scrapes a web with the user's requests and returns the requested output in text.
+Scrapes a web with the user's requests using the "BeautifulSoup" and "requests" libraries. 
+Then returns the requested output in text.
 
-##### http_return_error:
+##### http_return_error function:
 It takes as arguments a string and a status code.
 Return a response with a text and a status code.
 
@@ -34,7 +43,7 @@ Return a response with a text and a status code.
 Here are the responsive css styles
 
 ### img
-Here are the web images
+Here are the images used by the web
 
 ### js
 Here are the javascript files
@@ -42,7 +51,7 @@ Here are the javascript files
 #### scripts.js
 Here is the client-side logic.
 That the user can send an input by pressing the "Enter" or "Intro" key.
-Consume through the get method of the backend api to obtain the scrape in text.
+Consume with ajax through the get method of the backend api to obtain the scrape in text.
 Save a list of the user's past commands so you can see them.
 /export validations.
 Creation of the canvas to recreate the effect of the Matrix movie.
