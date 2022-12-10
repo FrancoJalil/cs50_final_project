@@ -1,5 +1,3 @@
-
-
 document.getElementById("command")
     .addEventListener("keyup", function(e) {
         if (e.key === 'Enter' || e.key === 'Intro') {
